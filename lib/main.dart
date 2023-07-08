@@ -86,9 +86,11 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
-void main() {
-  runApp(MyApp());
-}
+// void main() {
+//   runApp(MyApp());
+// }
+
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -111,35 +113,31 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: Center(child: Text('Hello, I am a xylophone')),
-        ),
+        backgroundColor: Colors.black,
+        // appBar: AppBar(
+        //   title: Center(child: Text('Hello, I am a xylophone')),
+        // ),
         body: SafeArea(
-          child: Center(
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  for (int i = 0; i < 7; i++)
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: TextButton(
-                        child: Text(
-                          'Click me ',
-                        ),
-                        style: TextButton.styleFrom(
-                          backgroundColor: rainbowColors[i],
-                          minimumSize: Size(200, 50),
-                        ),
-                        onPressed: () {
-                          // Play audio file for the corresponding button
-                          player.play(AssetSource('note${i + 1}.wav'));
-                        },
-                      ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              for (int i = 0; i < 7; i++)
+                Expanded(
+                  child: TextButton(
+                    child: Text(
+                        // 'Click me ',
+                        " "),
+                    style: TextButton.styleFrom(
+                      backgroundColor: rainbowColors[i],
+                      // minimumSize: Size(200, 50),
                     ),
-                ],
-              ),
-            ),
+                    onPressed: () {
+                      // Play audio file for the corresponding button
+                      player.play(AssetSource('note${i + 1}.wav'));
+                    },
+                  ),
+                ),
+            ],
           ),
         ),
       ),
